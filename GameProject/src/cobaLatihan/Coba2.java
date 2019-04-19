@@ -26,6 +26,7 @@ public class Coba2 extends JFrame {
 	Vector<Rectangle> peluru5 = new Vector<Rectangle>();
 	Vector<Rectangle> peluru6 = new Vector<Rectangle>();
 	Vector<Rectangle> peluru7 = new Vector<Rectangle>();
+	Vector<Rectangle> peluru8 = new Vector<Rectangle>();
 
 	KeyListener control = new KeyListener() {
 
@@ -81,7 +82,18 @@ public class Coba2 extends JFrame {
 					peluru2.add(new Rectangle((int) player.getCenterX(), player.y - 5, 2, 5));
 					peluru3.add(new Rectangle((int) player.getCenterX(), player.y - 5, 2, 5));
 				} else if (skill == 3) {
-					peluru1.add(new Rectangle((int) player.getCenterX(), player.y - 5, 2, 5));
+					peluru8.add(new Rectangle((int) player.getCenterX(), player.y - 5, 2, 5));
+//					skill3.start();
+//					for (Rectangle rectangle : peluru1) {
+//						if(rectangle.y > 0 && rectangle.y < 200) {
+//							peluru2.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+//							peluru3.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+//							peluru4.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+//							peluru5.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+//							peluru6.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+//							peluru7.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));					
+//						}
+//					}
 				}
 				break;
 			default:
@@ -90,36 +102,146 @@ public class Coba2 extends JFrame {
 			repaint();
 		}
 	};
+	
+//	Thread skill3 = new Thread(()->{
+//		while(true) {
+//			Iterator<Rectangle> it1 = peluru1.iterator();
+//			while (it1.hasNext()) {
+//				Rectangle tembak1 = (Rectangle) it1.next();
+//				tembak1.y -= 80;
+//				if (tembak1.y <= 0) {
+////					peluru1.remove(tembak1);
+//				}
+//				if (tembak1.y == 150) {
+//					peluru2.add(new Rectangle(tembak1.x, tembak1.y, 2, 5));
+//					peluru3.add(new Rectangle(tembak1.x, tembak1.y, 2, 5));
+//					peluru4.add(new Rectangle(tembak1.x, tembak1.y, 2, 5));
+//					peluru5.add(new Rectangle(tembak1.x, tembak1.y, 2, 5));
+//					peluru6.add(new Rectangle(tembak1.x, tembak1.y, 2, 5));
+//					peluru7.add(new Rectangle(tembak1.x, tembak1.y, 2, 5));
+//					Iterator<Rectangle> it2 = peluru2.iterator();
+//					Iterator<Rectangle> it3 = peluru3.iterator();
+//					Iterator<Rectangle> it4 = peluru4.iterator();
+//					Iterator<Rectangle> it5 = peluru5.iterator();
+//					Iterator<Rectangle> it6 = peluru6.iterator();
+//					Iterator<Rectangle> it7 = peluru7.iterator();
+//					while(it2.hasNext()) {
+//						Rectangle tembak2 = (Rectangle) it2.next();
+//						tembak2.x -= 20;
+//						tembak2.y -= 80;
+//					}
+//					while(it3.hasNext()) {
+//						Rectangle tembak3 = (Rectangle) it3.next();
+//						tembak3.x += 20;
+//						tembak3.y -= 80;
+//					}
+//					while(it4.hasNext()) {
+//						Rectangle tembak4 = (Rectangle) it4.next();
+//						tembak4.x -= 20;
+//					}
+//					while(it5.hasNext()) {
+//						Rectangle tembak5 = (Rectangle) it5.next();
+//						tembak5.x += 20;
+//					}
+//					while(it6.hasNext()) {
+//						Rectangle tembak6 = (Rectangle) it6.next();
+//						tembak6.x -= 20;
+//						tembak6.y += 80;
+//					}
+//					while(it7.hasNext()) {
+//						Rectangle tembak7 = (Rectangle) it7.next();
+//						tembak7.x += 20;
+//						tembak7.y += 80;
+//					}
+//				}
+//			}
+//			
+//		}
+//	});
 
 	Thread AI = new Thread(() -> {
 		while (true) {
 			x++;
 			x %= 3;
+			if(skill==3) {
+				for (Rectangle rectangle : peluru8) {
+					if(rectangle.y > 300 && rectangle.y < 330) {
+						peluru2.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+						peluru3.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+						peluru4.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+						peluru5.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+						peluru6.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));
+						peluru7.add(new Rectangle(rectangle.x, rectangle.y, 2, 5));					
+					}
+				}				
+			}
 			try {
 				Iterator<Rectangle> it1 = peluru1.iterator();
 				Iterator<Rectangle> it2 = peluru2.iterator();
 				Iterator<Rectangle> it3 = peluru3.iterator();
+				Iterator<Rectangle> it4 = peluru4.iterator();
+				Iterator<Rectangle> it5 = peluru5.iterator();
+				Iterator<Rectangle> it6 = peluru6.iterator();
+				Iterator<Rectangle> it7 = peluru7.iterator();
+				Iterator<Rectangle> it8 = peluru8.iterator();
 				while (it1.hasNext()) {
 					Rectangle tembak1 = (Rectangle) it1.next();
-					tembak1.y -= 80;
+					tembak1.y -= 30;
 					if (tembak1.y <= 0) {
 //						peluru1.remove(tembak1);
 					}
 				}
 				while (it2.hasNext()) {
 					Rectangle tembak2 = (Rectangle) it2.next();
-					tembak2.x -= 20;
-					tembak2.y -= 80;
+					tembak2.x -= 10;
+					tembak2.y -= 30;
 					if (tembak2.y <= 0 || tembak2.x <= 0) {
 //						peluru2.remove(tembak2);
 					}
 				}
 				while (it3.hasNext()) {
 					Rectangle tembak3 = (Rectangle) it3.next();
-					tembak3.x += 20;
-					tembak3.y -= 80;
+					tembak3.x += 10;
+					tembak3.y -= 30;
 					if (tembak3.y <= 0 || tembak3.x >= 400) {
 //						peluru3.remove(tembak3);
+					}
+				}
+				while(it4.hasNext()) {
+					Rectangle tembak4 = (Rectangle) it4.next();
+					tembak4.x -= 20;
+					if (tembak4.y <= 0 || tembak4.x >= 400) {
+//						peluru4.remove(tembak4);
+					}
+				}
+				while(it5.hasNext()) {
+					Rectangle tembak5 = (Rectangle) it5.next();
+					tembak5.x += 20;
+					if (tembak5.y <= 0 || tembak5.x >= 400) {
+//						peluru5.remove(tembak5);
+					}
+				}
+				while(it6.hasNext()) {
+					Rectangle tembak6 = (Rectangle) it6.next();
+					tembak6.x -= 10;
+					tembak6.y += 30;
+					if (tembak6.y <= 0 || tembak6.x >= 400) {
+//						peluru6.remove(tembak6);
+					}
+				}
+				while(it7.hasNext()) {
+					Rectangle tembak7 = (Rectangle) it7.next();
+					tembak7.x += 10;
+					tembak7.y += 30;
+					if (tembak7.y <= 0 || tembak7.x >= 400) {
+//						peluru7.remove(tembak7);
+					}
+				}
+				while (it8.hasNext()) {
+					Rectangle tembak8 = (Rectangle) it8.next();
+					tembak8.y -= 30;
+					if (tembak8.y <= 0) {
+//						peluru1.remove(tembak1);
 					}
 				}
 			} catch (Exception e) {
@@ -159,6 +281,36 @@ public class Coba2 extends JFrame {
 			if (r3.y >= 0 && r3.x <= 400) {
 				g.setColor(Color.MAGENTA);
 				g.fillOval(r3.x, r3.y, r3.width, r3.height);
+			}
+		}
+		for (Rectangle r4 : peluru4) {
+			if (r4.y >= 0 && r4.x <= 400) {
+				g.setColor(Color.MAGENTA);
+				g.fillOval(r4.x, r4.y, r4.width, r4.height);
+			}
+		}
+		for (Rectangle r5 : peluru5) {
+			if (r5.y >= 0 && r5.x <= 400) {
+				g.setColor(Color.MAGENTA);
+				g.fillOval(r5.x, r5.y, r5.width, r5.height);
+			}
+		}
+		for (Rectangle r6 : peluru6) {
+			if (r6.y >= 0 && r6.x <= 400) {
+				g.setColor(Color.MAGENTA);
+				g.fillOval(r6.x, r6.y, r6.width, r6.height);
+			}
+		}
+		for (Rectangle r7 : peluru7) {
+			if (r7.y >= 0 && r7.x <= 400) {
+				g.setColor(Color.MAGENTA);
+				g.fillOval(r7.x, r7.y, r7.width, r7.height);
+			}
+		}
+		for (Rectangle r8 : peluru8) {
+			if (r8.y >= 0 && r8.x <= 400) {
+				g.setColor(Color.MAGENTA);
+				g.fillOval(r8.x, r8.y, r8.width, r8.height);
 			}
 		}
 	}
